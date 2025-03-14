@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism Login Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #ff4f6d, #5352ed, #00d2d3, #ffb142);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.2);
+      top: -150px;
+      right: -50px;
+    }
+
+    .circle:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.2);
+      bottom: -100px;
+      left: 50px;
+    }
+
+    .circle:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.2);
+      bottom: 120px;
+      right: 50px;
+    }
+
+    .container {
+      position: relative;
+      width: 360px;
+      min-height: 480px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 40px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 380px;
+      height: 420px;
+      background: linear-gradient(0deg, transparent, #ff4f6d, #ff4f6d);
+      transform-origin: bottom right;
+      animation: animate 6s linear infinite;
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 380px;
+      height: 420px;
+      background: linear-gradient(0deg, transparent, #5352ed, #5352ed);
+      transform-origin: bottom right;
+      animation: animate 6s linear infinite;
+      animation-delay: -3s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .form {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .input-box {
+      position: relative;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 35px;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-box input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-box input:focus {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .checkbox label {
+      margin-left: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .forgot {
+      margin-bottom: 30px;
+      font-size: 14px;
+      text-align: right;
+      width: 100%;
+    }
+
+    .forgot a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .forgot a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      border-radius: 35px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .register {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .register a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .register a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  
+  <div class="container">
+    <div class="form">
+      <h2>Welcome Back</h2>
+      
+      <div class="input-box">
+        <input type="text" placeholder="Username or Email">
+        <i></i>
+      </div>
+      
+      <div class="input-box">
+        <input type="password" placeholder="Password">
+        <i></i>
+      </div>
+      
+      <div class="checkbox">
+        <input type="checkbox" id="remember">
+        <label for="remember">Remember me</label>
+      </div>
+      
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+      
+      <button class="btn">Log In</button>
+      
+      <div class="register">
+        Don't have an account? <a href="#">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
